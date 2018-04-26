@@ -46,9 +46,9 @@ class TurkishNoun
 end
 
 module Vowels
-  VOWEL_LIST = %w[]
+  VOWEL_LIST = %w[a e ı i̇ o ö u ü]
 end
 
 module Consonants
-  CONSONANT_LIST = %w[]
+  CONSONANT_LIST = %w[b c ç d f g ğ h j k l m n p r s ş t v y z]
 end
