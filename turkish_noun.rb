@@ -1,9 +1,15 @@
+require_relative 'helper_modules.rb'
+require 'pry'
+
 class TurkishNoun
   include Vowels
   include Consonants
+  include PluralEndings
+
+  attr_accessor :noun, :plural_noun
 
   def initialize(noun_infinitive)
-    @noun = noun
+    @noun = noun_infinitive.downcase
   end
 
   # Possession
@@ -41,14 +47,9 @@ class TurkishNoun
   # Plural
 
   def plural
-
+    word_without_consonants = @noun.delete(CONSONANT_LIST.join(''))
+    last_vowel = word_without_consonants[-1]
+    return self.noun + "lar" if LAR_ENDINGS.include?(last_vowel)
+    return self.noun + "ler" if LER_ENDINGS.include?(last_vowel)
   end
-end
-
-module Vowels
-  VOWEL_LIST = %w[a e ı i̇ o ö u ü]
-end
-
-module Consonants
-  CONSONANT_LIST = %w[b c ç d f g ğ h j k l m n p r s ş t v y z]
 end
