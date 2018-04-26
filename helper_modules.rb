@@ -10,3 +10,7 @@ end
 module Consonants
   CONSONANT_LIST = %w[b c ç d f g ğ h j k l m n p r s ş t v y z]
 end
+
+module CaseEndings
+  LOCATIVE_ENDINGS = %w[de da te ta]
+end
