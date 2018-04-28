@@ -10,7 +10,7 @@ describe 'Turkish Nouns' do
   end
 
   context "Plurals" do
-    it "returns the plural form of a noun based on the last vowel" do
+    it "returns the plural form" do
       expect(araba.plural).to eq("arabalar")
       expect(kapı.plural).to eq("kapılar")
       expect(top.plural).to eq("toplar")
@@ -24,7 +24,7 @@ describe 'Turkish Nouns' do
 
   context "Cases" do
     context "locative" do
-      it "returns the proper ending based on the last consonant" do
+      it "returns the proper locative ending" do
         expect(araba.locative).to eq("arabada")
         expect(park.locative).to eq("parkta")
         expect(cami.locative).to eq("camide")
@@ -34,6 +34,20 @@ describe 'Turkish Nouns' do
       end
     end
 
+    context "posession" do
+      it "returns the proper forms of the noun" do
+        expect(ev.posession).to eq(
+          {
+            ben: "benim evim",
+            sen: "senin evin",
+            o: "onun evi",
+            siz: "sizin eviniz",
+            biz: "bizim evimiz",
+            onlar: "onların evi"
+          }
+        )
+      end
+    end
   end
 end
 
