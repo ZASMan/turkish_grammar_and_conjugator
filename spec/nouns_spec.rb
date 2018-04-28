@@ -23,6 +23,16 @@ describe 'Turkish Nouns' do
   end
 
   context "Cases" do
+    context "locative" do
+      it "returns the proper ending based on the last consonant" do
+        expect(araba.locative).to eq("arabada")
+        expect(park.locative).to eq("parkta")
+        expect(cami.locative).to eq("camide")
+        expect(ofis.locative).to eq("ofiste")
+        expect(ev.locative).to eq("evde")
+        expect(kapı.locative).to eq("kapıda")
+      end
+    end
 
   end
 end

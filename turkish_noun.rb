@@ -2,17 +2,17 @@ require_relative 'helper_modules.rb'
 require 'pry'
 
 class TurkishNoun
-  include Vowels
-  include Consonants
-  include PluralEndings
+  include HarmonyComparisons
 
-  attr_accessor :noun, :word_without_consonants, :last_vowel, :last_consonant
+  attr_accessor :noun, :word_without_consonants, :last_vowel, :last_consonant, :last_letter
 
   def initialize(noun_infinitive)
     @noun = noun_infinitive.downcase
     @word_without_consonants = @noun.delete(CONSONANT_LIST.join(''))
+    @word_without_vowels = @noun.delete(VOWEL_LIST.join(''))
     @last_vowel = @word_without_consonants[-1]
-    # @last_consonant = 
+    @last_consonant = @word_without_vowels[-1]
+    @last_letter = @noun[-1]
   end
 
   # Cases
@@ -29,7 +29,18 @@ class TurkishNoun
 
   # At, on, in
   def locative
-
+    if last_letter_vowel?
+      return self.noun + "da" if ea_harmony?
+      return self.noun + "de" if ee_harmony?
+    end
+    if last_letter_voiced_consonant?
+      return self.noun + "da" if ea_harmony?
+      return self.noun + "de" if ee_harmony?
+    end
+    if last_letter_voiceless_consonant?
+      return self.noun + "ta" if ea_harmony?
+      return self.noun + "te" if ee_harmony?
+    end
   end
 
   # From, out of, through
@@ -45,7 +56,7 @@ class TurkishNoun
   # Plural
 
   def plural
-    return self.noun + "lar" if LAR_ENDINGS.include?(@last_vowel)
-    return self.noun + "ler" if LER_ENDINGS.include?(@last_vowel)
+    return self.noun + "lar" if lar_ending?
+    return self.noun + "ler" if ler_ending?
   end
 end
