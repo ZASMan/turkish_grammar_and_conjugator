@@ -7,4 +7,7 @@ RSpec.shared_context "Turkish Nouns" do
   let(:cami) { TurkishNoun.new("cami") }
   let(:göz) { TurkishNoun.new("göz") }
   let(:türk) { TurkishNoun.new("türk") }
+  let(:ofis) { TurkishNoun.new("ofis") }
+  let(:ev) { TurkishNoun.new("ev") }
+  let(:park) { TurkishNoun.new("park") }
 end
