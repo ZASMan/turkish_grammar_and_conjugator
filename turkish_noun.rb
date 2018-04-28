@@ -47,6 +47,19 @@ class TurkishNoun
   def ablative
 
   end
+
+  # I.E. My house, your house, etc.
+  def posession
+    result = {
+      ben: "",
+      sen: "",
+      o: "",
+      siz: "",
+      biz: "",
+      onlar: ""
+    }
+    return result
+  end
   
   # Posessive, of / 's
   def genitive
