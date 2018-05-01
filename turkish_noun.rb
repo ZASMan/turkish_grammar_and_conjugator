@@ -62,6 +62,7 @@ class TurkishNoun
   end
   
   # Posessive, of / 's
+  # http://www.turkishlanguage.co.uk/possessiverelationship.htm
   def genitive
  
   end
