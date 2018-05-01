@@ -1,5 +1,10 @@
 RSpec.shared_context "Turkish Nouns" do
+  let(:adam) { TurkishNoun.new("adam") }
+  let(:ağaç) { TurkishNoun.new("ağaç") }
+  let(:renk) { TurkishNoun.new("renk") }
   let(:araba) { TurkishNoun.new("araba") }
+  let(:banyo) { TurkishNoun.new("banyo") }
+  let(:köpek) { TurkishNoun.new("köpek") }
   let(:kapı) { TurkishNoun.new("kapı") }
   let(:top) { TurkishNoun.new("top") }
   let(:soru) { TurkishNoun.new("soru") }

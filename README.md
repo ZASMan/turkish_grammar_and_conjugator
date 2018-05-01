@@ -11,6 +11,8 @@ noun = TurkishNoun.new("araba")
 noun.plural == "arabalar"
 # Locative case
 noun.locative == "arabada"
+# Genitive case
+noun.genitive == ["arabanın", "arabaların"]
 ```
 
 More to come!
