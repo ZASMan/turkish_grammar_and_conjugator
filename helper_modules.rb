@@ -36,6 +36,12 @@ module HarmonyComparisons
   include PluralEndings
   include CaseEndings
 
+  # Vowel and consonant harmony helpers
+
+  def last_letter_k?
+    @last_letter == "k"
+  end
+
   def last_letter_vowel?
     VOWEL_LIST.include?(@last_letter )
   end
@@ -48,13 +54,20 @@ module HarmonyComparisons
     VOICELESS_CONSONANTS.include?(@last_letter)
   end
 
-  # Vowel Harmony
   def ea_harmony?
     E_TYPE_VOWEL_HARMONY_RULES[:a].include?(@last_vowel)
   end
 
   def ee_harmony?
     E_TYPE_VOWEL_HARMONY_RULES[:e].include?(@last_vowel)
+  end
+
+  def iuu_harmony?
+    I_TYPE_VOWEL_HARMONY_RULES[:ü].include?(@last_vowel)
+  end
+
+  def iu_harmony?
+    I_TYPE_VOWEL_HARMONY_RULES[:u].include?(@last_vowel)
   end
 
   # Plural Endings

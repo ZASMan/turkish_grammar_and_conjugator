@@ -36,14 +36,14 @@ describe 'Turkish Nouns' do
 
     context 'genitive' do
       # http://www.turkishlanguage.co.uk/possessiverelationship.htm
-      xit 'should return an array with the singular and plural genitive endings of the noun' do
+      it 'should return the plural genitive endings of the noun' do
         expect(adam.genitive).to eq(["adamın", "adamların"])
         expect(göz.genitive).to eq(["gözün", "gözlerin"])
         expect(banyo.genitive).to eq(["banyonun", "banyoların"])
       end
 
       context "consonant harmony" do
-        xit "should return an array with noun transformed to account for consonant harmony" do
+        it "should return an array with noun transformed to account for consonant harmony" do
           expect(köpek.genitive).to eq(["köpeğin", "köpeklerin"])
         end
       end
