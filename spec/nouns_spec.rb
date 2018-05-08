@@ -44,7 +44,9 @@ describe 'Turkish Nouns' do
 
       context "consonant harmony" do
         it "should return an array with noun transformed to account for consonant harmony" do
+          expect(renk.genitive).to eq(["rengin", "renklerin"])
           expect(köpek.genitive).to eq(["köpeğin", "köpeklerin"])
+          expect(ağaç.genitive).to eq(["ağacın", "ağaçların"])
         end
       end
     end

@@ -67,9 +67,7 @@ class TurkishNoun
   # Note: Nouns ending in vowels use buffer letter -n to form -nin
   # But plurals are formed withou tthe buffer letter n
   def genitive
-    # This needs some work http://www.turkishclass.com/forumTitle_51654
-    # because also b > p etc.
-    noun = last_letter_k? ? @noun[0..(@noun.length-2)] + "ğ" : @noun
+    noun = mutate_consonants_if_necessary
     result = []
     # Singular
     if iuu_harmony?
@@ -87,7 +85,7 @@ class TurkishNoun
     elsif ler_ending?
       result << @plural + "in"
     end
-    result
+    return result
   end
 
   # Plural
