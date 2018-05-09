@@ -2,7 +2,7 @@ require_relative 'helper_modules.rb'
 require 'pry'
 
 class TurkishNoun
-  include HarmonyComparisons
+  include AllTurkishNounHelpers
 
   attr_accessor :noun, :word_without_consonants, :last_vowel, :last_consonant, :last_letter, :plural
 
@@ -51,15 +51,14 @@ class TurkishNoun
 
   # I.E. My house, your house, etc.
   def posession
-    result = {
-      ben: "",
-      sen: "",
-      o: "",
-      siz: "",
-      biz: "",
-      onlar: ""
+    return {
+      ben: "benim #{@noun}" + ben_ending,
+      sen: "senin #{@noun}" + sen_ending,
+      o: "onun #{@noun}" + o_ending,
+      siz: "sizin #{@noun}" + siz_ending,
+      biz: "bizim #{@noun}" + biz_ending,
+      onlar: "onların #{@noun}" + onlar_ending
     }
-    return result
   end
   
   # Posessive, of / 's
