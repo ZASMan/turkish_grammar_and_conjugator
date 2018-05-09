@@ -20,12 +20,12 @@ class TurkishNoun
   # Needed when verb is transitive verb
   # Needed when object of the sentence is definite and specific
   def accusative_definite
-
+    return ""
   end
   
   # To, towards
   def dative
-
+    return ""
   end
 
   # At, on, in
@@ -46,7 +46,7 @@ class TurkishNoun
 
   # From, out of, through
   def ablative
-
+    return ""
   end
 
   # I.E. My house, your house, etc.
@@ -93,5 +93,17 @@ class TurkishNoun
   def plural
     return self.noun + "lar" if lar_ending?
     return self.noun + "ler" if ler_ending?
+  end
+
+  def all_noun_forms
+    {
+      plural: plural,
+      accusative_definite: accusative_definite,
+      dative: dative,
+      locative: locative,
+      ablative: ablative,
+      posession: posession,
+      genitive: genitive
+    }
   end
 end

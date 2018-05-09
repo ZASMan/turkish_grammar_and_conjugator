@@ -65,22 +65,15 @@ describe 'Turkish Nouns' do
         )
       end
     end
+
+    context "all noun forms" do
+      it "should return a hash with all noun forms" do
+        result = adam.all_noun_forms
+        expect(result.class).to eq Hash
+        %i[plural accusative_definite dative locative ablative posession genitive].each do |key|
+          expect(result.has_key?(key)).to eq true
+        end
+      end
+    end
   end
 end
-
-=begin
-
-Last Vowel	Suffix
-a, ı, o, u	-lar
-e, i, ö, ü	-ler
-Examples: 
-Araba - Arabalar (Car - Cars)
-Kapı - Kapılar (Door - Doors)
-Top - Toplar (Ball - Balls)
-Soru - Sorular (Question - Questions)
-
-Kalem - Kalemler (Pen - Pens)
-Cami - Camiler (Mosque - Mosques)
-Göz - Gözler (Eye - Eyes)
-Türk - Türkler (Turk - Turks)
-=end
