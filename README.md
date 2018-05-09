@@ -15,4 +15,6 @@ noun.locative == "arabada"
 noun.genitive == ["arabanın", "arabaların"]
 ```
 
+Verb class TBD.
+
 More to come!
