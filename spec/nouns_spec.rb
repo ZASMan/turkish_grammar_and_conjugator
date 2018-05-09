@@ -52,7 +52,7 @@ describe 'Turkish Nouns' do
     end
 
     context "posession" do
-      xit "should return the proper forms of the noun" do
+      it "should return the proper forms of the noun" do
         expect(ev.posession).to eq(
           {
             ben: "benim evim",
@@ -60,14 +60,16 @@ describe 'Turkish Nouns' do
             o: "onun evi",
             siz: "sizin eviniz",
             biz: "bizim evimiz",
-            onlar: "onların evi"
+            onlar: "onların evileri"
           }
         )
+        expect(araba.posession[:ben]).to eq("benim arabam")
+        expect(araba.posession[:sen]).to eq("senin araban")
       end
     end
 
     context "all noun forms" do
-      it "should return a hash with all noun forms" do
+      xit "should return a hash with all noun forms" do
         result = adam.all_noun_forms
         expect(result.class).to eq Hash
         %i[plural accusative_definite dative locative ablative posession genitive].each do |key|

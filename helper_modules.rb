@@ -30,28 +30,95 @@ module CaseEndings
 end
 
 module PosessiveEndings
+  # http://www.turkishlanguage.co.uk/possadj.htm
+  
+  def last_vowel_for_posessive
+    if @last_vowel == "e"
+      return "i"
+    elsif @last_vowel == "ö"
+      return "ü"
+    else
+      return @last_vowel
+    end
+  end
+
+  def last_vowel_for_o_siz_biz_ending
+    if @last_vowel == "a"
+      return "ı"
+    elsif @last_vowel == "e"
+      return "i"
+    elsif @last_vowel == "ö"
+      return "ü"
+    else
+      return @last_vowel
+    end
+  end
+
   def ben_ending
-    return ""
+    # ‑ım ‑im ‑um ‑üm
+    # After vowels: -m
+    last_vowel = last_vowel_for_posessive
+    if last_letter_vowel?
+      return "m"
+    else
+      return last_vowel + "m"
+    end
   end
 
   def sen_ending
-    return ""
+    # ‑ın ‑in ‑un ‑ün
+    # After vowels: -n
+    last_vowel = last_vowel_for_posessive
+    if last_letter_vowel?
+      return "n"
+    else
+      return last_vowel + "n"
+    end
   end
 
   def o_ending
-    return ""
+    # ‑ı ‑i ‑u ‑ü
+    # After vowels: ‑sı ‑si ‑su‑ ‑sü
+    if last_letter_vowel?
+      return "s" + last_vowel_for_o_siz_biz_ending
+    else
+      last_vowel = last_vowel_for_o_siz_biz_ending
+      return last_vowel
+    end
   end
 
   def siz_ending
-    return ""
+    # ‑ınız ‑iniz ‑unuz ‑ünüz
+    # After vowels: ‑nız ‑niz ‑nuz ‑nüz
+    last_vowel = last_vowel_for_o_siz_biz_ending
+    if last_letter_vowel?
+      return "n" + last_vowel + "z"
+    else 
+      return last_vowel + "n" + last_vowel + "z"
+    end
   end
 
   def biz_ending
-    return ""
+    # ‑ımız ‑imiz ‑umuz ‑ümüz
+    # After vowels: ‑mız ‑miz ‑muz ‑müz
+    last_vowel = last_vowel_for_o_siz_biz_ending
+    if last_letter_vowel?
+      return "mız" if last_vowel == "ı"
+      return "miz" if last_vowel == "i"
+      return "muz" if last_vowel == "u"
+      return "müz" if last_vowel == "ü"
+    else
+      return "ımız" if last_vowel == "ı"
+      return "imiz" if last_vowel == "i"
+      return "umuz" if last_vowel == "u"
+      return "ümüz" if last_vowel == "ü"
+    end
   end
 
   def onlar_ending
-    return ""
+    # ‑ları ‑leri
+    return "ıları" if lar_ending?
+    return "ileri" if ler_ending?
   end
 end
 
