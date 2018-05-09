@@ -7,7 +7,7 @@ class TurkishVerb
   attr_accessor :verb, :verb_stem
 
   def initialize(verb_infinitive)
-    # @verb = verb_infinitive
-    # @verb_stem = 
+  	@verb = verb_infinitive.downcase
+    @verb_stem = @verb[0..-4]
   end
 end
