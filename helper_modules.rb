@@ -29,12 +29,39 @@ module CaseEndings
   LOCATIVE_ENDINGS = %w[de da te ta]
 end
 
+module PosessiveEndings
+  def ben_ending
+    return ""
+  end
+
+  def sen_ending
+    return ""
+  end
+
+  def o_ending
+    return ""
+  end
+
+  def siz_ending
+    return ""
+  end
+
+  def biz_ending
+    return ""
+  end
+
+  def onlar_ending
+    return ""
+  end
+end
+
 module HarmonyComparisons
   include Vowels
   include Consonants
   include CaseEndings
   include PluralEndings
   include CaseEndings
+  include PosessiveEndings
 
   # Vowel and consonant harmony helpers
 
@@ -117,4 +144,8 @@ module HarmonyComparisons
   def ler_ending?
     LER_ENDINGS.include?(@last_vowel)
   end
+end
+
+module AllTurkishNounHelpers
+  include HarmonyComparisons
 end
