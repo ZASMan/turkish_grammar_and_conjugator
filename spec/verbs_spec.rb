@@ -9,8 +9,16 @@ describe 'Turkish Verbs' do
     end
 
     it "should return the stem of the verb as an instance variable" do
-      expect(TurkishVerb.new("yapmak").verb_stem).to eq("yap")
-      expect(TurkishVerb.new("gitmek").verb_stem).to eq("git")
+      expect(yapmak.verb_stem).to eq("yap")
+      expect(gitmek.verb_stem).to eq("git")
+    end
+  end
+
+  context "Class Methods" do
+    xit "should return a hash with all forms of the verb" do
+      all_verb_forms = gitmek.all_verb_forms
+      expect(all_verb_forms[:infinitive]).to eq("gitmek")
+      expect(all_verb_forms[:verb_stem]).to eq("git")
     end
   end
 end
