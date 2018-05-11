@@ -15,6 +15,16 @@ describe 'Turkish Verbs' do
   end
 
   context "Class Methods" do
+    # http://turkishbasics.com/verbs/definite-past-tense.php
+    xit "should return the definite past tense forms" do
+      expect(yazmak[:ben]).to eq("yazdım")
+      expect(yazmak[:sen]).to eq("yazdın")
+      expect(yazmak[:o]).to eq("yazdı")
+      expect(yazmak[:siz]).to eq("yazdınız")
+      expect(yazmak[:biz]).to eq("yazdık")
+      expect(yazmak[:onlar]).to eq("yazdılar")
+    end
+
     xit "should return a hash with all forms of the verb" do
       all_verb_forms = gitmek.all_verb_forms
       expect(all_verb_forms[:infinitive]).to eq("gitmek")
