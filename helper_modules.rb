@@ -103,15 +103,9 @@ module PosessiveEndings
     # After vowels: ‑mız ‑miz ‑muz ‑müz
     last_vowel = last_vowel_for_o_siz_biz_ending
     if last_letter_vowel?
-      return "mız" if last_vowel == "ı"
-      return "miz" if last_vowel == "i"
-      return "muz" if last_vowel == "u"
-      return "müz" if last_vowel == "ü"
+      return "m" + last_vowel + "z"
     else
-      return "ımız" if last_vowel == "ı"
-      return "imiz" if last_vowel == "i"
-      return "umuz" if last_vowel == "u"
-      return "ümüz" if last_vowel == "ü"
+      return last_vowel + "m" + last_vowel + "z"
     end
   end
 
