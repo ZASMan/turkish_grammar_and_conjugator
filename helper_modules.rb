@@ -207,6 +207,6 @@ module HarmonyComparisons
   end
 end
 
-module AllTurkishNounHelpers
+module AllTurkishGrammarHelpers
   include HarmonyComparisons
 end

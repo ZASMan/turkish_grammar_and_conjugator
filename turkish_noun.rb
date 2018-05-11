@@ -2,7 +2,7 @@ require_relative 'helper_modules.rb'
 require 'pry'
 
 class TurkishNoun
-  include AllTurkishNounHelpers
+  include AllTurkishGrammarHelpers
 
   attr_accessor :noun, :word_without_consonants, :last_vowel, :last_consonant, :last_letter, :plural
 
