@@ -215,7 +215,7 @@ module AllTurkishGrammarHelpers
   include HarmonyComparisons
 
   def which_consonant_suffix?
-    if last_letter_voiced_consonant?
+    if last_letter_voiced_consonant? || last_letter_vowel?
       return "d"
     else
       return "t"

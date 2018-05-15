@@ -25,6 +25,10 @@ describe 'Turkish Verbs' do
       expect(yazmak.definite_past_tense[:onlar]).to eq("yazdılar")
       expect(gitmek.definite_past_tense[:ben]).to eq("gittim")
       expect(gitmek.definite_past_tense[:biz]).to eq("gittik")
+      expect(yapmak.definite_past_tense[:ben]).to eq("yaptım")
+      expect(konusmak.definite_past_tense[:ben]).to eq("konuştum")
+      expect(dusmek.definite_past_tense[:ben]).to eq("düştüm")
+      expect(izlemek.definite_past_tense[:ben]).to eq("izledim")
     end
 
     xit "should return a hash with all forms of the verb" do

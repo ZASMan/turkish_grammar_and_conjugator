@@ -9,9 +9,9 @@ class TurkishVerb
 
   def initialize(verb_infinitive)
     @verb = verb_infinitive.downcase
-    @word_without_consonants = @verb.delete(CONSONANT_LIST.join(''))
-    @word_without_vowels = @verb.delete(VOWEL_LIST.join(''))
     @verb_stem = @verb[0..-4]
+    @word_without_consonants = @verb_stem.delete(CONSONANT_LIST.join(''))
+    @word_without_vowels = @verb_stem.delete(VOWEL_LIST.join(''))
     @last_vowel = @word_without_consonants[-1]
     @last_consonant = @word_without_vowels[-1]
     @last_letter = @verb_stem.split("").last
