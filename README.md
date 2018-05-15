@@ -7,7 +7,9 @@ Rather than displaying hard coded values, I thought it would be cool to write a 
 
 The eventual goal will be to display this on a website (perhaps a Sinatra or Rails application) where users can type in a noun and get all of its forms or a verb and get all of its conjugations.
 
-The first goal is to initialize the nouns in their different cases based on vowel harmony/consonant mutation. For example, given that you initialize a new instance of the noun class like:
+The first goal is to initialize the nouns in their different cases based on vowel harmony/consonant mutation.
+
+Example of noun class:
 
 ```
 noun = TurkishNoun.new("araba")
@@ -19,6 +21,15 @@ noun.locative == "arabada"
 noun.genitive == ["arabanın", "arabaların"]
 ```
 
-Verb class TBD.
+Example of verb class:
 
-More to come!
+```
+# Gitmek
+verb = TurkishVerb.new("gitmek")
+# Definite Past Tense
+verb.definite_past_tense[:ben] == "gittim"
+# Yapmak
+verb = TurkishVerb.new("yapmak")
+# Definite Past Tense
+verb.definite_past_tense[:ben] == "yaptım"
+```
