@@ -173,7 +173,7 @@ module HarmonyComparisons
   end
 
   def last_letter_voiced_consonant?
-    VOICED_CONSONANTS.include?(@last_letter )
+    VOICED_CONSONANTS.include?(@last_letter)
   end
 
   def last_letter_voiceless_consonant?
@@ -207,6 +207,51 @@ module HarmonyComparisons
   end
 end
 
+module VerbConjugations
+  include HarmonyComparisons
+end
+
 module AllTurkishGrammarHelpers
   include HarmonyComparisons
+
+  def which_consonant_suffix?
+    if last_letter_voiced_consonant?
+      return "d"
+    else
+      return "t"
+    end
+  end
+
+  def which_vowel_definite_past_suffix?
+    return "ı" if I_TYPE_VOWEL_HARMONY_RULES[:ı].include?(@last_vowel)
+    return "i" if I_TYPE_VOWEL_HARMONY_RULES[:i].include?(@last_vowel)
+    return "u" if I_TYPE_VOWEL_HARMONY_RULES[:u].include?(@last_vowel)
+    return "ü" if I_TYPE_VOWEL_HARMONY_RULES[:ü].include?(@last_vowel)
+  end
+
+  def definite_past_ending(pronoun)
+    consonant_suffix = which_consonant_suffix?
+    last_vowel = which_vowel_definite_past_suffix?
+    if ler_ending?
+      onlar_ending = "ler"
+    else
+      onlar_ending = "lar"
+    end
+    case pronoun
+    when "ben"
+      return consonant_suffix + last_vowel + "m"
+    when "sen"
+      return consonant_suffix + last_vowel + "n"
+    when "o"
+      return consonant_suffix + last_vowel
+    when "siz"
+      return consonant_suffix + last_vowel + "n" + last_vowel + "z"
+    when "biz"
+      return consonant_suffix + last_vowel + "k"
+    when "onlar"
+      return consonant_suffix + last_vowel + onlar_ending
+    else
+      return ""
+    end
+  end
 end
