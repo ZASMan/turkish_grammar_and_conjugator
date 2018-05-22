@@ -33,3 +33,10 @@ verb = TurkishVerb.new("yapmak")
 # Definite Past Tense
 verb.definite_past_tense[:ben] == "yaptım"
 ```
+
+Setup:
+
+1. Clone
+2. Bundle install
+3. Run the specs with `rspec`
+4. A sinatra application is included to view the classes. To use it, run, `ruby turkish_grammar_web_application.rb` and visit `http://localhost:4567/`
