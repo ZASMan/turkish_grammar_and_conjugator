@@ -33,80 +33,52 @@ module PosessiveEndings
   # http://www.turkishlanguage.co.uk/possadj.htm
   
   def last_vowel_for_posessive
-    if @last_vowel == "e"
-      return "i"
-    elsif @last_vowel == "ö"
-      return "ü"
-    else
-      return @last_vowel
-    end
+    return "i" if @last_vowel == "e"
+    return "ü" if @last_vowel == "ö"
+    return "ı" if @last_vowel == "a"
   end
 
   def last_vowel_for_o_siz_biz_ending
-    if @last_vowel == "a"
-      return "ı"
-    elsif @last_vowel == "e"
-      return "i"
-    elsif @last_vowel == "ö"
-      return "ü"
-    else
-      return @last_vowel
-    end
+    return "ı" if @last_vowel == "a"
+    return "i" if @last_vowel == "e"
+    return "ü" if @last_vowel == "ö"
+    return @last_vowel
   end
 
   def ben_ending
-    # ‑ım ‑im ‑um ‑üm
-    # After vowels: -m
-    last_vowel = last_vowel_for_posessive
-    if last_letter_vowel?
-      return "m"
-    else
-      return last_vowel + "m"
-    end
+    return "m" if last_letter_vowel?
+    return last_vowel_for_posessive + "m"
   end
 
   def sen_ending
     # ‑ın ‑in ‑un ‑ün
     # After vowels: -n
-    last_vowel = last_vowel_for_posessive
-    if last_letter_vowel?
-      return "n"
-    else
-      return last_vowel + "n"
-    end
+    return "n" if last_letter_vowel?
+    return last_vowel_for_posessive + "n"
   end
 
   def o_ending
     # ‑ı ‑i ‑u ‑ü
     # After vowels: ‑sı ‑si ‑su‑ ‑sü
-    if last_letter_vowel?
-      return "s" + last_vowel_for_o_siz_biz_ending
-    else
-      last_vowel = last_vowel_for_o_siz_biz_ending
-      return last_vowel
-    end
+    return "s" + last_vowel_for_o_siz_biz_ending if last_letter_vowel?
+    last_vowel = last_vowel_for_o_siz_biz_ending
+    return last_vowel
   end
 
   def siz_ending
     # ‑ınız ‑iniz ‑unuz ‑ünüz
     # After vowels: ‑nız ‑niz ‑nuz ‑nüz
     last_vowel = last_vowel_for_o_siz_biz_ending
-    if last_letter_vowel?
-      return "n" + last_vowel + "z"
-    else 
-      return last_vowel + "n" + last_vowel + "z"
-    end
+    return "n" + last_vowel + "z" if last_letter_vowel?
+    return last_vowel + "n" + last_vowel + "z"
   end
 
   def biz_ending
     # ‑ımız ‑imiz ‑umuz ‑ümüz
     # After vowels: ‑mız ‑miz ‑muz ‑müz
     last_vowel = last_vowel_for_o_siz_biz_ending
-    if last_letter_vowel?
-      return "m" + last_vowel + "z"
-    else
-      return last_vowel + "m" + last_vowel + "z"
-    end
+    return "m" + last_vowel + "z" if last_letter_vowel?
+    return last_vowel + "m" + last_vowel + "z"
   end
 
   def onlar_ending
@@ -138,11 +110,7 @@ module HarmonyComparisons
   def modify_kg_mutation
     # Irregular because nğ would be unpronouncable
     letter_preceeding_k = noun_without_last_letter.split("").last
-    if letter_preceeding_k == "n"
-      noun_without_last_letter + "g"
-    else
-      noun_without_last_letter + "ğ"
-    end
+    letter_preceeding_k == "n" ? noun_without_last_letter + "g" : noun_without_last_letter + "ğ"
   end
 
   def modify_pb_mutation
@@ -215,11 +183,8 @@ module AllTurkishGrammarHelpers
   include HarmonyComparisons
 
   def which_consonant_suffix?
-    if last_letter_voiced_consonant? || last_letter_vowel?
-      return "d"
-    else
-      return "t"
-    end
+    return "d" if last_letter_voiced_consonant? || last_letter_vowel?
+    return "t"
   end
 
   def which_vowel_definite_past_suffix?
@@ -232,11 +197,7 @@ module AllTurkishGrammarHelpers
   def definite_past_ending(pronoun)
     consonant_suffix = which_consonant_suffix?
     last_vowel = which_vowel_definite_past_suffix?
-    if ler_ending?
-      onlar_ending = "ler"
-    else
-      onlar_ending = "lar"
-    end
+    ler_ending? ? onlar_ending = "ler" : onlar_ending = "lar"
     case pronoun
     when "ben"
       return consonant_suffix + last_vowel + "m"
