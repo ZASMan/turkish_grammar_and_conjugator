@@ -67,7 +67,7 @@ describe 'Turkish Nouns' do
         expect(araba.posession[:sen]).to eq("senin araban")
         expect(adam.posession[:ben]).to eq("benim adamım")
         expect(adam.posession[:sen]).to eq("senin adamın")
-        # expect(köpek.posession[:ben]).to eq("benim köpeğim")
+        expect(köpek.posession[:ben]).to eq("benim köpeğim")
       end
     end
 

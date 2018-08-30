@@ -51,13 +51,14 @@ class TurkishNoun
 
   # I.E. My house, your house, etc.
   def posession
+    noun = mutate_consonants_if_necessary
     return {
-      ben: "benim #{@noun}" + ben_ending,
-      sen: "senin #{@noun}" + sen_ending,
-      o: "onun #{@noun}" + o_ending,
-      siz: "sizin #{@noun}" + siz_ending,
-      biz: "bizim #{@noun}" + biz_ending,
-      onlar: "onların #{@noun}" + onlar_ending
+      ben: "benim #{noun}" + ben_ending,
+      sen: "senin #{noun}" + sen_ending,
+      o: "onun #{noun}" + o_ending,
+      siz: "sizin #{noun}" + siz_ending,
+      biz: "bizim #{noun}" + biz_ending,
+      onlar: "onların #{noun}" + onlar_ending
     }
   end
   
