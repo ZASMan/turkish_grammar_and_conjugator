@@ -137,7 +137,7 @@ module HarmonyComparisons
   end
 
   def last_letter_vowel?
-    VOWEL_LIST.include?(@last_letter )
+    VOWEL_LIST.include?(@last_letter)
   end
 
   def last_letter_voiced_consonant?
