@@ -4,7 +4,14 @@ require 'pry'
 class TurkishNoun
   include AllTurkishGrammarHelpers
 
-  attr_accessor :noun, :word_without_consonants, :last_vowel, :last_consonant, :last_letter, :plural
+  attr_accessor(
+    :noun,
+    :word_without_consonants,
+    :last_vowel,
+    :last_consonant,
+    :last_letter,
+    :plural
+  )
 
   def initialize(noun_infinitive)
     @noun = noun_infinitive.downcase
@@ -25,7 +32,12 @@ class TurkishNoun
   
   # To, towards
   def dative
-    return ""
+    if last_letter_vowel?
+      return self.noun + "y" + @last_vowel
+    else
+      return self.noun + "a" if %w[a ı o u].include?(@last_vowel)
+      return self.noun + "e" if %w[e i ö ü].include?(@last_vowel)
+    end
   end
 
   # At, on, in

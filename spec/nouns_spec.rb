@@ -24,13 +24,21 @@ describe 'Turkish Nouns' do
 
   context "Cases" do
     context "locative" do
-      it "should return the proper locative ending" do
+      it "should return the proper locative ending of the noun" do
         expect(araba.locative).to eq("arabada")
         expect(park.locative).to eq("parkta")
         expect(cami.locative).to eq("camide")
         expect(ofis.locative).to eq("ofiste")
         expect(ev.locative).to eq("evde")
         expect(kapı.locative).to eq("kapıda")
+      end
+    end
+
+    context 'dative' do
+      it "shoudld return the proper dative ending of the noun" do
+        expect(araba.dative).to eq("arabaya")
+        expect(ev.dative).to eq("eve")
+        expect(okul.dative).to eq("okula")
       end
     end
 
