@@ -194,6 +194,26 @@ module AllTurkishGrammarHelpers
     return "ü" if I_TYPE_VOWEL_HARMONY_RULES[:ü].include?(@last_vowel)
   end
 
+  def present_continuous_ending(pronoun)
+    last_vowel = which_vowel_definite_past_suffix?
+    case pronoun
+    when "ben"
+      return last_vowel + "yorum"
+    when "sen"
+      return last_vowel + "yorsun"
+    when "o"
+      return last_vowel + "yor"
+    when "siz"
+      return last_vowel + "yorsunuz"
+    when "biz"
+      return last_vowel + "yoruz"
+    when "onlar"
+      return last_vowel + "yorlar"
+    else
+      return ""
+    end
+  end
+
   def definite_past_ending(pronoun)
     consonant_suffix = which_consonant_suffix?
     last_vowel = which_vowel_definite_past_suffix?
