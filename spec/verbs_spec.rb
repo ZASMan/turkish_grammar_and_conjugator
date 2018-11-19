@@ -31,6 +31,10 @@ describe 'Turkish Verbs' do
       expect(izlemek.definite_past_tense[:ben]).to eq("izledim")
     end
 
+    it "should return the present continuous verb forms" do
+      expect(yazmak.present_continuous_tense[:ben]).to eq('yazıyorum')
+    end
+
     xit "should return a hash with all forms of the verb" do
       all_verb_forms = gitmek.all_verb_forms
       expect(all_verb_forms[:infinitive]).to eq("gitmek")
