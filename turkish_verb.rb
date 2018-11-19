@@ -15,16 +15,12 @@ class TurkishVerb
     @last_vowel = @word_without_consonants[-1]
     @last_consonant = @word_without_vowels[-1]
     @last_letter = @verb_stem.split("").last
+    @pronoun_array = %i[ben sen o siz biz onlar]
   end
 
   def definite_past_tense
-    {
-      ben: @verb_stem + definite_past_ending("ben"),
-      sen: @verb_stem + definite_past_ending("sen"),
-      o: @verb_stem + definite_past_ending("o"),
-      siz: @verb_stem + definite_past_ending("siz"),
-      biz: @verb_stem + definite_past_ending("biz"),
-      onlar: @verb_stem + definite_past_ending("onlar")
-    }
+    definite_past_tense_values = @pronoun_array.collect { |pronoun| @verb_stem + definite_past_ending(pronoun.to_s) }
+    definite_past_tense_conjugations = @pronoun_array.zip(definite_past_tense_values).to_h
+    return definite_past_tense_conjugations
   end
 end
