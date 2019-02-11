@@ -18,6 +18,12 @@ class TurkishVerb
     @pronoun_array = %i[ben sen o siz biz onlar]
   end
 
+  def present_simple_tense
+    present_simple_tense_values = @pronoun_array.collect { |pronoun| @verb_stem + present_simple_ending(pronoun.to_s) }
+    present_simple_tense_hash = @pronoun_array.zip(present_simple_tense_values).to_h
+    return present_simple_tense_hash
+  end
+
   def present_continuous_tense
     present_continous_tense_values = @pronoun_array.collect { |pronoun| @verb_stem + present_continuous_ending(pronoun.to_s) }
     present_continuous_tense_hash = @pronoun_array.zip(present_continous_tense_values).to_h

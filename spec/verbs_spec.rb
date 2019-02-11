@@ -15,6 +15,15 @@ describe 'Turkish Verbs' do
   end
 
   context "Class Methods" do
+
+    it "should return the present simple tense" do
+      expect(yazmak.present_simple_tense[:ben]).to eq("yazarım")
+      expect(yazmak.present_simple_tense[:sen]).to eq("yazarsın")
+      expect(yazmak.present_simple_tense[:o]).to eq("yazar")
+      expect(yazmak.present_simple_tense[:biz]).to eq("yazarız")
+      expect(yazmak.present_simple_tense[:siz]).to eq("yazarsınız")
+      expect(yazmak.present_simple_tense[:onlar]).to eq("yazarlar")
+    end
     # http://turkishbasics.com/verbs/definite-past-tense.php
     it "should return the definite past tense forms" do
       expect(yazmak.definite_past_tense[:ben]).to eq("yazdım")

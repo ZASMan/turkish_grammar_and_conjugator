@@ -187,11 +187,61 @@ module AllTurkishGrammarHelpers
     return "t"
   end
 
+  def which_vowel_present_simple_suffix?
+    which_vowel_definite_past_suffix?
+  end
+
   def which_vowel_definite_past_suffix?
     return "ı" if I_TYPE_VOWEL_HARMONY_RULES[:ı].include?(@last_vowel)
     return "i" if I_TYPE_VOWEL_HARMONY_RULES[:i].include?(@last_vowel)
     return "u" if I_TYPE_VOWEL_HARMONY_RULES[:u].include?(@last_vowel)
     return "ü" if I_TYPE_VOWEL_HARMONY_RULES[:ü].include?(@last_vowel)
+  end
+
+  def present_simple_ending(pronoun)
+    last_vowel = which_vowel_present_simple_suffix?
+    case pronoun
+    when "ben"
+      if last_letter_voiced_consonant?
+        return @last_vowel + "r" + last_vowel + "m"
+      else
+        return "r" + last_vowel + "m"
+      end
+    when "sen"
+      if last_letter_voiced_consonant?
+        return @last_vowel + 'rs' + last_vowel + "n"
+      else
+        return "rs" + last_vowel + "n"
+      end
+    when "o"
+      if last_letter_voiced_consonant?
+        return @last_vowel + "r"
+      else
+        return "r"
+      end
+    when "siz"
+      if last_letter_voiced_consonant?
+        return @last_vowel + "rs" + last_vowel + "n" + last_vowel + "z"
+      else
+        return "rs" + last_vowel + "n" + last_vowel + "z"
+      end
+    when "biz"
+      if last_letter_voiced_consonant?
+        return @last_vowel + "r" + last_vowel + "z"
+      else
+        return "r" + last_vowel + "z"
+      end
+    when "onlar"
+      onlar_ending = %w[i u ü].include?(last_vowel) ? "ler" : "lar"
+      if last_letter_voiced_consonant?
+        return @last_vowel + "r" + onlar_ending
+      else
+        return "r" + onlar_ending
+      end
+    else
+      return ""
+    end
+
   end
 
   def present_continuous_ending(pronoun)
